@@ -1,0 +1,42 @@
+:root {
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+}
+
+
+
+body {
+  margin: 0;
+  display: flex;
+justify-content: center;
+align-items: center;
+height:100vh;
+}
+.grid{
+  display:grid;
+  grid-template-columns: repeat(3, 100px);
+  grid-template-rows: repeat(3, 100px);
+  
+}
+.item{
+  border-bottom:4px solid black;
+  border-left:4px solid black;
+  font-size:40px;
+ 
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+}
+.corners{
+  border-left:none;
+
+}
+.bottom{
+  border-bottom:none;
+}
+.item p{
+  text-align: center;
+}
