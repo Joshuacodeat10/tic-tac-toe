@@ -15,11 +15,12 @@ function App() {
     setPlayer(array[0])   
     setTogglePlayer(toggleplayer => !toggleplayer)
     if (!toggleplayer){
-      setPlayer(array[1])
-      console.log(toggleplayer)
-    }
     if (toggleplayer){
       setPlayer(array[0])
+      console.log(toggleplayer)
+    }
+    if (!toggleplayer){
+      setPlayer(array[1])
       console.log(toggleplayer)
    }
     console.log(toggleplayer)
