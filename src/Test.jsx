@@ -114,3 +114,59 @@ function App() {
 }
 
 export default App
+import { useState } from 'react'
+function App() {
+  
+  let [playerr, setPlayer] = useState({
+ index1:'X',index2:'O',index3:'O' ,
+ index4:'O',index5:'O',index6:'X',
+ index7:'X',index8:'X',index9:'X'
+  }
+    )
+  const [toggleplayer, setTogglePlayer] = useState(true)
+  const checkWin = () =>{
+    if(playerr.index1 && playerr.index2 && playerr.index3 ){
+      console.log(playerr.index1, 'Wins')
+    }
+    if(playerr.index1 && playerr.index5 && playerr.index9 === playerr.index9){
+      console.log(playerr.index1, 'Wins')
+    }
+    if(playerr.index3 && playerr.index5 && playerr.index7 === playerr.index7){
+      console.log(playerr.index3, 'Wins')
+    }
+    if(playerr.index3 && playerr.index6 && playerr.index9 === playerr.index9){
+      console.log(playerr.index3, 'Wins')
+      console.log('ara')
+    }
+    if(playerr.index1 && playerr.index4 && playerr.index7 === playerr.index7){
+      console.log(playerr.index1, 'Wins')
+      console.log('aaara')
+    }
+    if(playerr.index7 && playerr.index8 && playerr.index9 === playerr.index9){
+      console.log(playerr.index7, 'Wins')
+      console.log('aasara')
+    }
+  }
+  
+  return (
+    <>
+    <button >Start GAme</button>
+
+      <div className="grid">
+        <div onClick={checkWin}className="item corners"><p>{playerr.index1}</p></div>
+        <div className="item"></div>
+        <div className="item"></div>
+        <div className="item corners"></div>
+        <div className="item"></div>
+        <div className="item"></div>
+        <div className="item corners bottom"></div>
+        <div className="item bottom" ></div>
+        <div className="item bottom"></div>
+       </div>
+       <button >Restart game</button>
+       <p></p>
+    </>
+  )
+}
+
+export default App;
