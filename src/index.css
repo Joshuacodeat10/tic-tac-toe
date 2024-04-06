@@ -1,23 +1,27 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Quicksand:wght@300..700&display=swap');
+
 :root {
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  font-family: Inter;
   line-height: 1.5;
-  font-weight: 400;
+  
 
 }
 
 
 
 body {
-  margin: 0;
+ 
   display: flex;
-justify-content: center;
-align-items: center;
-height:100vh;
+  justify-content: center;
+  align-items: center;
+  overflow: auto;
+  height: 100vh; 
 }
 .grid{
+  margin-top: 50px;
   display:grid;
-  grid-template-columns: repeat(3, 100px);
-  grid-template-rows: repeat(3, 100px);
+  grid-template-columns: repeat(3, 120px);
+  grid-template-rows: repeat(3, 120px);
   
 }
 .item{
@@ -39,4 +43,54 @@ height:100vh;
 }
 .item p{
   text-align: center;
+}
+.scorecounter{
+  display:flex;
+  width:360px;
+  
+  justify-content: space-between;
+  
+}
+.scorecounter .scores{
+  display:flex;
+  justify-content: space-between;
+  align-items: center;
+  border: 1px solid silver;
+  box-shadow:1px 5px 3px silver;
+  border-radius:8px;
+  padding:0px 10px 0px 10px;
+  height:unset;
+  width:130px;
+
+}
+.underline{
+  border-bottom:4px solid #0b6d75 !important ;
+}
+ h2 , p{ 
+  padding:0;
+  margin:0;
+}
+.scorecounter .scores h2{ 
+  margin:0;
+  font-size:24px;
+  color:black;
+  font-weight:600;
+  
+}
+.scorecounter .scores p{ 
+  font-size:26px;
+  color:grey;
+  font-weight:500;
+  
+}
+.restart{
+  width:400px;
+  border:1px solid silver;
+  background-color:white;
+  color:#0b6d75;
+  margin-top:40px;
+  padding-top:8px;
+  padding-bottom:8px;
+  font-family: Inter;
+  font-weight:500;
 }
