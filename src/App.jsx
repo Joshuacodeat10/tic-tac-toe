@@ -329,7 +329,7 @@ function App() {
     )
   }
   return (
-    <>
+    <div className="container">
   
     <div className="scorecounter">
       <div className='nameHandler'>
@@ -364,6 +364,7 @@ function App() {
 
     <h1>{wintext}</h1>
       {/*Grid where the tic tac toe is displayed*/}
+      <div className='grid-container'>
       <div className="grid">
         <div onClick={()=>{UpdateState(0);}} className="item corners"><p>{playerr[0]}</p></div>
         <div onClick={()=>{UpdateState(1);}} className="item"><p>{playerr[1]}</p></div>
@@ -375,9 +376,10 @@ function App() {
         <div onClick={()=>{UpdateState(7);}} className="item bottom" ><p>{playerr[7]}</p></div>
         <div onClick={()=>{UpdateState(8);}} className="item bottom"><p>{playerr[8]}</p></div>
        </div>
+       </div>
        <button className="restart" onClick={restartGame}>Restart game</button>
        <p></p>
-    </ >
+    </ div>
   )
 }
 
