@@ -84,7 +84,7 @@ body {
   
 }
 .restart{
-  width:400px;
+  min-width:100%;
   border:1px solid silver;
   background-color:white;
   color:#0b6d75;
@@ -93,4 +93,22 @@ body {
   padding-bottom:8px;
   font-family: Inter;
   font-weight:500;
+}
+.bold{
+  width:90%;
+  border:none;
+  font-size:15px;
+  color:black;
+  font-weight:600;
+}
+.bold:focus{
+  outline:none;
+}
+.nameHandler{
+
+}
+.nameHandler h1{
+  font-size:17px;
+  text-align: center;
+  font-weight:600;
 }

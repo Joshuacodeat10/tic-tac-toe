@@ -1,12 +1,13 @@
 import { useEffect, useState } from 'react'
 function App() {
-  //created objected grid for the tic tac toe game
-  let [playerr, setPlayer] = useState({
-    index1:'',index2:'',index3:'' ,
-    index4:'',index5:'',index6:'',
-    index7:'',index8:'',index9:''
-  }
+  
+  let [playerr, setPlayer] = useState(
+  ['','','',
+   '','','',
+   '','','']
   )
+  //   let [playerr, setPlayer] = useState(['','','','']
+  // )
   //Useeffect for detecting when someones wins the game, did this to bypass useStates asychronous updates
   useEffect(( )=>{
     findDraw();
@@ -17,14 +18,23 @@ function App() {
   const[wintext, setWinText]= useState('');
   //Usestate variable For toggling between letters
   const [toggleplayer, setTogglePlayer] = useState(true)
-  //For settin g the letter, workswith the toggling function
+  //For settin the letter, works with the toggling function
   const[letter, setLetter] = useState('X')
+  const [playerNames, setPlayersName] = useState(['X','O'])
   const[player1Score, SetPlayer1Score] = useState(0)
   const[player2Score, SetPlayer2Score] = useState(0)
   //toggle function
+  function changePlayerName(event, number){
+    const newPlayerNames= [...playerNames]; 
+    newPlayerNames[number] = event.target.value; 
+    setPlayersName(newPlayerNames)
+  }
   const handleClick = () =>{
+    // array that contains the two playable options, X or O 
     const array=['X','O']
+    // Code that sets the current letter to X by default
     setLetter(array[0])   
+    // This toggles the current letter between X and O*
     setTogglePlayer(toggleplayer => !toggleplayer)
     if (!toggleplayer){
       setLetter(array[0])
@@ -38,125 +48,130 @@ function App() {
   }
   
   const checkWin = () =>{    
-    if(playerr.index1 !== ''){
-      if(playerr.index1 === playerr.index1  && playerr.index2 === playerr.index1 && playerr.index3  === playerr.index1 ){
+    if(playerr[0] !== ''){
+      if(playerr[0] === playerr[0]  && playerr[1] === playerr[0] && playerr[2]  === playerr[0] ){
         if(hasWon === false){
         setHasWon(true)
-       
-        setWinText(playerr.index1 +  '  Wins')
         setLetter('')
-        
-        
-        if(playerr.index1 === 'X'){
+        if(playerr[0] === 'X'){
           SetPlayer1Score(count => count+1)
+          setWinText(playerNames[0] +  '  Wins')
         }
-        if(playerr.index1 === 'O'){
+        if(playerr[0] === 'O'){
           SetPlayer2Score(count => count+1)
+          setWinText(playerNames[1] +  '  Wins')
         }
       }
       }
-      if(playerr.index1  === playerr.index1 && playerr.index5  === playerr.index1 && playerr.index9  === playerr.index1){
+      if(playerr[0]  === playerr[0] && playerr[4]  === playerr[0] && playerr[8]  === playerr[0]){
         if(hasWon === false){
-        setWinText(playerr.index1 + '  Wins')
+        
         setLetter('')
        
         setHasWon(true)
-        if(playerr.index1 === 'X'){
+        if(playerr[0] === 'X'){
           SetPlayer1Score(count => count+1)
+          setWinText(playerNames[0] +  '  Wins')
         }
-        if(playerr.index1 === 'O'){
+        if(playerr[0] === 'O'){
           SetPlayer2Score(count => count+1)
+          setWinText(playerNames[1] +  '  Wins')
         }
       }
       }
-      if(playerr.index1  === playerr.index1 && playerr.index4  === playerr.index1 && playerr.index7  === playerr.index1){
+      if(playerr[0]  === playerr[0] && playerr[3]  === playerr[0] && playerr[6]  === playerr[0]){
         if(hasWon === false){
         setHasWon(true)
-        setWinText(playerr.index1 + '  Wins')
          setLetter('')
-        if(playerr.index1 === 'X'){
+         if(playerr[0] === 'X'){
           SetPlayer1Score(count => count+1)
+          setWinText(playerNames[0] +  '  Wins')
         }
-        if(playerr.index1 === 'O'){
+        if(playerr[0] === 'O'){
           SetPlayer2Score(count => count+1)
+          setWinText(playerNames[1] +  '  Wins')
         }
       }
       }
     }
-    if(playerr.index2 !== ''){
-      if(playerr.index2  === playerr.index2 && playerr.index5  === playerr.index2 && playerr.index8  === playerr.index2){
+    if(playerr[1] !== ''){
+      if(playerr[1]  === playerr[1] && playerr[4]  === playerr[1] && playerr[7]  === playerr[1]){
         if(hasWon === false){
-          setWinText(playerr.index2 + '  Wins')
           setLetter('')
           setHasWon(true)
-          if(playerr.index2 === 'X'){
+          if(playerr[1] === 'X'){
             SetPlayer1Score(count => count+1)
+            setWinText('plae' +  '  Wins')
           }
-          if(playerr.index2 === 'O'){
+          if(playerr[1] === 'O'){
             SetPlayer2Score(count => count+1)
+            setWinText(playerNames[1] +  '  Wins')
           }
         }
       }
     }
-    if(playerr.index4 !== ''){
-      if(playerr.index4  === playerr.index4 && playerr.index5  === playerr.index4 && playerr.index6  === playerr.index4){
+    if(playerr[3] !== ''){
+      if(playerr[3]  === playerr[3] && playerr[4]  === playerr[3] && playerr[5]  === playerr[3]){
         if(hasWon === false){
-        setWinText(playerr.index4 +'  Wins')
         setLetter('')
         setHasWon(true)
-        if(playerr.index4 === 'X'){
+        if(playerr[3] === 'X'){
           SetPlayer1Score(count => count+1)
+          setWinText(playerNames[0] +  '  Wins')
         }
-        if(playerr.index4 === 'O'){
+        if(playerr[3] === 'O'){
           SetPlayer2Score(count => count+1)
+          setWinText(playerNames[1] +  '  Wins')
         }
         
       }
     }
     }
-    if(playerr.index3 !== ''){
+    if(playerr[2] !== ''){
 
-      if(playerr.index3  === playerr.index3 && playerr.index5  === playerr.index3 && playerr.index7 === playerr.index3){
+      if(playerr[2]  === playerr[2] && playerr[4]  === playerr[2] && playerr[6] === playerr[2]){
         if(hasWon === false){
-        setWinText(playerr.index3+ '  Wins')
         setLetter('')
         setHasWon(true)
-        if(playerr.index3 === 'X'){
+        if(playerr[2] === 'X'){
           SetPlayer1Score(count => count+1)
+          setWinText(playerNames[0] +  '  Wins')
         }
-        if(playerr.index3 === 'O'){
+        if(playerr[2] === 'O'){
           SetPlayer2Score(count => count+1)
+          setWinText(playerNames[1] +  '  Wins')
         }
       }
       }
       
-      if(playerr.index3  === playerr.index3 && playerr.index6  === playerr.index3 && playerr.index9  === playerr.index3){
+      if(playerr[2]  === playerr[2] && playerr[5]  === playerr[2] && playerr[8]  === playerr[2]){
         if(hasWon === false){
-          setWinText(playerr.index3+ '  Wins')
-          setTogglePlayer(null)
-          console.log('Yep me')
           setHasWon(true)
-          if(playerr.index3 === 'X'){
+          setLetter('')
+          if(playerr[2] === 'X'){
             SetPlayer1Score(count => count+1)
+            setWinText(playerNames[0] +  '  Wins')
           }
-          if(playerr.index3 === 'O'){
+          if(playerr[2] === 'O'){
             SetPlayer2Score(count => count+1)
+            setWinText(playerNames[1] +  '  Wins')
           }
       }
-      setLetter('')
+      
       }
     }
-    if(playerr.index7 !== ''){
-      if(playerr.index7  === playerr.index7 && playerr.index8  === playerr.index7 && playerr.index9  === playerr.index7){
+    if(playerr[6] !== ''){
+      if(playerr[6]  === playerr[6] && playerr[7]  === playerr[6] && playerr[8]  === playerr[6]){
         if(hasWon === false){
-        setWinText(playerr.index7+ '  Wins')
         setLetter('')
         setHasWon(true)
-        if(playerr.index7 === 'X'){
+        if(playerr[6] === 'X'){
           SetPlayer1Score(count => count+1)
+          setWinText(playerNames[0] +  '  Wins')
         }
-        if(playerr.index7 === 'O'){
+        if(playerr[6] === 'O'){
           SetPlayer2Score(count => count+1)
+          setWinText(playerNames[1] +  '  Wins')
         }
         
         }
@@ -164,136 +179,201 @@ function App() {
     }
   }
   const UpdateState = (name) => {
+    if(playerNames[0]  === ''){
+    alert('Make sure to type player X name')
+    }
+    if(playerNames[1]  === ''){
+      alert('Make sure to type player 2s name')
+    }
+    
+     else{
+     
    setWinText('')
-    if(name==='index1'){
-      if(playerr.index1 === ''){
+   //Code for updating each of the tic tac toe's rows and columns, when clicked */
+    if(name===0){
+      if(playerr[0] === ''){
         if(hasWon === false){
           console.log('yeah')
           handleClick();
-          setPlayer( prevState => ({...prevState, index1:letter}));
+          //Code for updating the rows and colmns to the current letter, which is X or O. 
+          const newTodos=[...playerr];
+          newTodos[name] = letter;
+          setPlayer( newTodos);
         }
       }
     
     }
-    if(name==='index2'){
+    if(name===1){
       
-      if(playerr.index2 === ''){
+      if(playerr[1] === ''){
         if(hasWon === false){
           handleClick();
-          setPlayer( prevState => ({...prevState, index2:letter}));
+          //Code for updating the rows and colmns to the current letter, which is X or O. 
+ 
+          const newTodos=[...playerr];
+          newTodos[name] = letter;
+          setPlayer( newTodos);
         } 
       }
       
     }
-    if(name==='index3'){
-      if(playerr.index3 === ''){
+    if(name===2){
+      if(playerr[2] === ''){
         if(hasWon === false){
           handleClick();
-          setPlayer( prevState => ({...prevState, index3:letter}));
+          //Code for updating the rows and colmns to the current letter, which is X
+          const newTodos=[...playerr];
+          newTodos[name] = letter;
+          setPlayer( newTodos);
         }
       }
       
     }
-    if(name==='index4'){
-      if(playerr.index4 === ''){
+    if(name===3){
+      if(playerr[3] === ''){
         if(hasWon === false){
           handleClick();
-          setPlayer( prevState => ({...prevState, index4:letter}));
+          //Code for updating the rows and colmns to the current letter, which is X or O. 
+ 
+          const newTodos=[...playerr];
+          newTodos[name] = letter;
+          setPlayer( newTodos);
         }
       }
       
     }
-    if(name==='index5'){
-      if(playerr.index5 === ''){
+    if(name===4){
+      if(playerr[4] === ''){
         if(hasWon === false){
           handleClick();
-          setPlayer( prevState => ({...prevState, index5:letter}));
+          //Code for updating the rows and colmns to the current letter, which is X or O. 
+ 
+          const newTodos=[...playerr];
+          newTodos[name] = letter;
+          setPlayer( newTodos);
         }
       }
      
     }
-    if(name==='index6'){
-      if(playerr.index6 === ''){
+    if(name===5){
+      if(playerr[5] === ''){
         if(hasWon === false){
           handleClick();
-          setPlayer( prevState => ({...prevState, index6:letter}));
+          //Code for updating the rows and colmns to the current letter, which is X or O. 
+ 
+          const newTodos=[...playerr];
+          newTodos[name] = letter;
+          setPlayer( newTodos);
         }
       }
       
     }
-    if(name==='index7'){
-      if(playerr.index7 === ''){
+    if(name===6){
+      if(playerr[6] === ''){
         if(hasWon === false){
           handleClick();
-          setPlayer( prevState => ({...prevState, index7:letter}));
+          //Code for updating the rows and colmns to the current letter, which is X or O. 
+ 
+          const newTodos=[...playerr];
+          newTodos[name] = letter;
+          setPlayer( newTodos);
         }
       }
      
     }
-    if(name==='index8'){
-      if(playerr.index8 === ''){
+    if(name===7){
+      if(playerr[7] === ''){
         if(hasWon === false){
           handleClick();
-          setPlayer( prevState => ({...prevState, index8:letter}));
+          //Code for updating the rows and colmns to the current letter, which is X or O. 
+ 
+          const newTodos=[...playerr];
+          newTodos[name] = letter;
+          setPlayer( newTodos);
         }
       }
       
     }
-    if(name==='index9'){
-      if(playerr.index9 === ''){
+    if(name===8){
+      if(playerr[8] === ''){
         if(hasWon === false){
           handleClick();
-          setPlayer( prevState => ({...prevState, index9:letter}));
+          //Code for updating the rows and colmns to the current letter, which is X or O. 
+ 
+          const newTodos=[...playerr];
+          newTodos[name] = letter;
+          setPlayer( newTodos);
         }
       }
 
     }
+     }
   }
+  /*function for finding when a draw happens */
   const findDraw= () =>{
-    if( hasWon === false && playerr.index1 !== '' && playerr.index2 !== '' && playerr.index3 !== '' && playerr.index4 !== '' && playerr.index5 !== '' && playerr.index6 !== '' && playerr.index7 !== '' && playerr.index8 !== '' && playerr.index9 !== '' ){
+    if( hasWon === false && playerr[0] !== '' && playerr[1] !== '' && playerr[2] !== '' && playerr[3] !== '' && playerr[4] !== '' && playerr[5] !== '' && playerr[6] !== '' && playerr[7] !== '' && playerr[8] !== '' ){
       setWinText('It is a shameful draw')
 
     }
   }
-
+  /*function for restarting the game */
   const restartGame =() =>{
     setWinText('Next Round')
     setHasWon(false)
     setLetter('X')
     setTogglePlayer(true)
-    setPlayer({
-      index1:'',index2:'',index3:'' ,
-      index4:'',index5:'',index6:'',
-      index7:'',index8:'',index9:''
-    })
+    setPlayer(
+  ['','','',
+   '','','',
+   '','','']
+    )
   }
   return (
     <>
   
     <div className="scorecounter">
-      <div className={`scores ${toggleplayer ?  'underline' : ''}`}>
-          <h2 className="bold">X</h2>
-          <p>{player1Score}</p>
-          
+      <div className='nameHandler'>
+        {/*Input for changing the name of player 1 */}
+        <h1>Enter Player X Name</h1>
+        <div className={`scores ${toggleplayer ?  'underline' : ''}`}>
+            <input 
+              className="bold" 
+              value={playerNames[0]} 
+              onChange={(event) => {changePlayerName(event, 0)}}
+              type='text'
+              
+            />
+            <p>{player1Score}</p>
+        </div>
       </div>
-      <div className={`scores ${!toggleplayer ?  'underline' : ''}`}>
-          <h2 className="bold">O</h2>
-          <p>{player2Score}</p>
-
+      <div className='nameHandler'>
+        {/*Input for changing the name of player 2 */}
+        <h1>Enter Player O Name</h1>
+        <div className={`scores ${!toggleplayer ?  'underline' : ''}`}>
+        <input 
+              className="bold" 
+              value={playerNames[1]} 
+              onChange={(event) => {changePlayerName(event, 1)}}
+              type='text'
+              
+            />
+            <p>{player2Score}</p>
+        </div>
       </div>
       </div>    
 
     <h1>{wintext}</h1>
+      {/*Grid where the tic tac toe is displayed*/}
       <div className="grid">
-        <div onClick={()=>{UpdateState('index1');}} className="item corners"><p>{playerr.index1}</p></div>
-        <div onClick={()=>{UpdateState('index2');}} className="item"><p>{playerr.index2}</p></div>
-        <div onClick={()=>{UpdateState('index3');}} className="item"><p>{playerr.index3}</p></div>
-        <div onClick={()=>{UpdateState('index4');}} className="item corners"><p>{playerr.index4}</p></div>
-        <div onClick={()=>{UpdateState('index5');}} className="item"><p>{playerr.index5}</p></div>
-        <div onClick={()=>{UpdateState('index6');}} className="item"><p>{playerr.index6}</p></div>
-        <div onClick={()=>{UpdateState('index7');}} className="item corners bottom"><p>{playerr.index7}</p></div>
-        <div onClick={()=>{UpdateState('index8');}} className="item bottom" ><p>{playerr.index8}</p></div>
-        <div onClick={()=>{UpdateState('index9');}} className="item bottom"><p>{playerr.index9}</p></div>
+        <div onClick={()=>{UpdateState(0);}} className="item corners"><p>{playerr[0]}</p></div>
+        <div onClick={()=>{UpdateState(1);}} className="item"><p>{playerr[1]}</p></div>
+        <div onClick={()=>{UpdateState(2);}} className="item"><p>{playerr[2]}</p></div>
+        <div onClick={()=>{UpdateState(3);}} className="item corners"><p>{playerr[3]}</p></div>
+        <div onClick={()=>{UpdateState(4);}} className="item"><p>{playerr[4]}</p></div>
+        <div onClick={()=>{UpdateState(5);}} className="item"><p>{playerr[5]}</p></div>
+        <div onClick={()=>{UpdateState(6);}} className="item corners bottom"><p>{playerr[6]}</p></div>
+        <div onClick={()=>{UpdateState(7);}} className="item bottom" ><p>{playerr[7]}</p></div>
+        <div onClick={()=>{UpdateState(8);}} className="item bottom"><p>{playerr[8]}</p></div>
        </div>
        <button className="restart" onClick={restartGame}>Restart game</button>
        <p></p>
